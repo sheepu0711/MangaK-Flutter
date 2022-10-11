@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "112737121008",
+    "project_id": "mangak-5e52b",
+    "storage_bucket": "mangak-5e52b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112737121008:android:d86ba98cdf73fb63948835",
+        "android_client_info": {
+          "package_name": "com.sheepu.mangak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "112737121008-5slst88dc04122a6hghs4nh2odbqscaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9H64lyd7drOsieuBfCmUvHAbV5MRvd-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "112737121008-5slst88dc04122a6hghs4nh2odbqscaa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "112737121008-hokhj1mn08rflnemghmaaq370b08o2l9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sheepu.mangak"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
