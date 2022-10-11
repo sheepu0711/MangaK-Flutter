@@ -34,7 +34,7 @@ MangaK is an open source manga reader app. It is built using Flutter with GetX f
 <p align="center">
   <img alt="MangaDetail" src="home.png" width="45%">
 &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Reader" src="profile.png" width="45%">
+  <img alt="Profile" src="Profile.png" width="45%">
 </p>
 <p align="center">
   <img alt="MangaDetail" src="MangaDetail.png" width="45%">
