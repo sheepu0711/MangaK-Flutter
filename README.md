@@ -2,7 +2,7 @@
 
 ## What is MangaK ?
 
-MangaK is an open source manga reader app. It is built using Flutter with GetX framework. It uses [MangaDex API](http://api.mangadex.org/) to fetch manga data.
+MangaK is an open source manga reader app. It is built using Flutter and the GetX framework. It uses [MangaDex API](http://api.mangadex.org/) to fetch manga data.
 
 ## Setting up the app
 

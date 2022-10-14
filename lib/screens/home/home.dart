@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mangak/screens/home/labeltitle.dart';
 import 'package:mangak/ulti/manga_api.dart';
 import 'package:mangak/screens/components/loadingshrimmer.dart';
 import 'package:mangak/screens/home/homecontroller.dart';
@@ -74,22 +75,12 @@ class Home extends GetView<HomeController> {
                         ),
                       );
                     },
-                    // controller: homeController.editingcontroller.value,
-                    // controller: controller,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    children: const [
-                      Text(
-                        'Trending Manga',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                      Spacer(),
-                    ],
+                  const LabelTitle(
+                    title: 'Treding Manga',
                   ),
                   const SizedBox(
                     height: 20,
@@ -123,16 +114,8 @@ class Home extends GetView<HomeController> {
                             ),
                     ),
                   ),
-                  Row(
-                    children: const [
-                      Text(
-                        'Top Readers',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                      Spacer(),
-                    ],
+                  const LabelTitle(
+                    title: 'Top Readers',
                   ),
                   const SizedBox(
                     height: 10,
@@ -200,19 +183,9 @@ class Home extends GetView<HomeController> {
                     () => homeController.isLast.value
                         ? Container()
                         : Column(
-                            children: [
-                              Row(
-                                children: const [
-                                  Text(
-                                    'Continues Reading',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                ],
-                              ),
-                              const SizedBox(
+                            children: const [
+                              LabelTitle(title: 'Continues Reading'),
+                              SizedBox(
                                 height: 20,
                               ),
                             ],
@@ -225,7 +198,6 @@ class Home extends GetView<HomeController> {
                         .snapshots(),
                     builder:
                         (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-                      // print(homeController.isLoading.value);
                       if (!snapshot.hasData) {
                         return ContinuesReading(height: height, width: width);
                       } else if (snapshot.hasData &&
@@ -294,92 +266,6 @@ class Home extends GetView<HomeController> {
                       }
                     },
                   ),
-                  // Obx(
-                  //   () => homeController.isLast.value
-                  //       ? homeController.notContainLast.value
-                  //           ? Container()
-                  //           : ContinuesReading(height: height, width: width)
-                  //       : InkWell(
-                  //           onTap: () => MangaApi().toDetail(
-                  //               manga: homeController.lastManga.value,
-                  //               cover: homeController.lastCoverArt.value,
-                  //               author: 'author'),
-                  //           child: Container(
-                  //             height:
-                  //                 context.orientation == Orientation.portrait
-                  //                     ? height * 0.1
-                  //                     : height * 0.2,
-                  //             width: width * 0.9,
-                  //             padding:
-                  //                 const EdgeInsets.symmetric(horizontal: 20),
-                  //             decoration: BoxDecoration(
-                  //               borderRadius: BorderRadius.circular(60),
-                  //               gradient: const LinearGradient(
-                  //                   colors: kSecondaryGradient,
-                  //                   begin: Alignment.topRight,
-                  //                   end: Alignment.bottomLeft),
-                  //             ),
-                  //             child: Row(children: [
-                  //               SizedBox(
-                  //                 height: context.orientation ==
-                  //                         Orientation.portrait
-                  //                     ? height * 0.08
-                  //                     : height * 0.15,
-                  //                 width: context.orientation ==
-                  //                         Orientation.portrait
-                  //                     ? height * 0.08
-                  //                     : height * 0.15,
-                  //                 child: Obx(() => ClipRRect(
-                  //                       borderRadius: BorderRadius.circular(60),
-                  //                       child: Image.network(
-                  //                         homeController.lastCoverArt.value,
-                  //                         fit: BoxFit.cover,
-                  //                       ),
-                  //                     )),
-                  //               ),
-                  //               SizedBox(
-                  //                 height: 70,
-                  //                 child: Obx(() => Center(
-                  //                       child: SizedBox(
-                  //                         width: width * 0.5,
-                  //                         child: Text(
-                  //                           homeController.lastTitle.value
-                  //                               .toString(),
-                  //                           textAlign: TextAlign.center,
-                  //                         ),
-                  //                       ),
-                  //                     )),
-                  //               ),
-                  //               const Spacer(),
-                  //               const Icon(Icons.play_arrow)
-                  //             ]),
-                  //           ),
-                  //         ),
-                  // ),
-
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
-                  // const Text('abc'),
                 ],
               ),
             ),

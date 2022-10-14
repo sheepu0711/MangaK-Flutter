@@ -10,12 +10,10 @@ class SplashController extends GetxController {
 
   Future<void> initState() async {
     var user = FirebaseAuth.instance.currentUser;
+    await Future.delayed(const Duration(seconds: 3));
     if (user == null) {
-      await Future.delayed(const Duration(seconds: 3));
       Get.offNamed('/login');
     } else {
-      await Future.delayed(const Duration(seconds: 3));
-      // print(user);
       Get.offNamed('/home');
     }
   }

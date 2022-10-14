@@ -28,17 +28,12 @@ class GenresController extends GetxController {
   }
 
   Future<void> continues() async {
-    if (selectedGenres.isEmpty) {
-      Get.snackbar('Error', 'Please select at least one genre');
-    } else {
-      User user = FirebaseAuth.instance.currentUser!;
-      DocumentReference document = FirebaseFirestore.instance
-          .collection('users')
-          .doc(user.uid.toString());
-      document.update({
-        'genres': selectedGenres,
-      });
-      Get.offAllNamed('/home');
-    }
+    User user = FirebaseAuth.instance.currentUser!;
+    DocumentReference document =
+        FirebaseFirestore.instance.collection('users').doc(user.uid.toString());
+    document.update({
+      'genres': selectedGenres,
+    });
+    Get.offAllNamed('/home');
   }
 }

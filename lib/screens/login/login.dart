@@ -54,11 +54,6 @@ class LoginScreen extends GetWidget<LoginController> {
                         duration: const Duration(seconds: 5),
                       );
                     }
-                    // print(FirebaseAuth.instance.currentUser);
-
-                    // if (FirebaseAuth.instance.currentUser != null) {
-                    //   Get.offAllNamed('/home');
-                    // }
                   },
                   child: Container(
                       width: width * 0.65,
@@ -105,10 +100,6 @@ class LoginScreen extends GetWidget<LoginController> {
                           snackPosition: SnackPosition.BOTTOM,
                           duration: const Duration(seconds: 5));
                     }
-                    // print(FirebaseAuth.instance.currentUser);
-                    // if (FirebaseAuth.instance.currentUser != null) {
-                    //   Get.offAllNamed('/home');
-                    // }
                   },
                   child: Container(
                       width: width * 0.65,
@@ -173,183 +164,191 @@ class LoginScreen extends GetWidget<LoginController> {
                 SizedBox(
                   height: height * 0.05,
                 ),
-                Obx(() => controller.signUp.value
-                    ? Container(
-                        height: height * 0.6,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 45, vertical: 80),
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(colors: kSecondaryGradient),
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(20)),
-                        ),
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              controller: controller.emailController.value,
-                              decoration:
-                                  const InputDecoration(hintText: 'Email'),
-                            ),
-                            SizedBox(
-                              height: height * 0.04,
-                            ),
-                            Obx(() => TextFormField(
-                                  onChanged: (value) {
-                                    if (value.isEmpty) {
-                                      controller.isPasswordVisible.value =
-                                          false;
-                                    } else {
-                                      controller.isPasswordVisible.value = true;
-                                    }
-                                  },
-                                  controller:
-                                      controller.passwordController.value,
-                                  obscureText:
-                                      controller.isPasswordVisible.value,
-                                  decoration: InputDecoration(
-                                    suffixIcon: controller.passwordController
-                                            .value.text.isEmpty
-                                        ? null
-                                        : IconButton(
-                                            icon: const Icon(Icons.visibility),
-                                            onPressed: controller
-                                                .togglePasswordVisibility,
-                                          ),
-                                    hintText: 'Password',
-                                  ),
-                                )),
-                            SizedBox(
-                              height: height * 0.04,
-                            ),
-                            TextFormField(
-                              onChanged: (value) {
-                                if (value.isEmpty) {
-                                  controller.isPasswordVisible.value = false;
-                                } else {
-                                  controller.isPasswordVisible.value = true;
-                                }
-                              },
-                              controller: controller.repasswordController.value,
-                              obscureText: controller.isPasswordVisible.value,
-                              decoration: const InputDecoration(
-                                hintText: 'Re-enter Password',
+                Obx(
+                  () => controller.signUp.value
+                      ? Container(
+                          height: height * 0.6,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 45, vertical: 80),
+                          decoration: const BoxDecoration(
+                            gradient:
+                                LinearGradient(colors: kSecondaryGradient),
+                            borderRadius:
+                                BorderRadius.vertical(top: Radius.circular(20)),
+                          ),
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                controller: controller.emailController.value,
+                                decoration:
+                                    const InputDecoration(hintText: 'Email'),
                               ),
-                            ),
-                            SizedBox(
-                              height: height * 0.04,
-                            ),
-                            Text.rich(
-                              TextSpan(
-                                text: 'Have an account? ',
-                                style: const TextStyle(
-                                    color: Colors.grey, fontSize: 16),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          controller
-                                              .emailController.value.text = '';
-                                          controller.passwordController.value
-                                              .text = '';
-                                          controller.repasswordController.value
-                                              .text = '';
-                                          controller.signUp.value =
-                                              !controller.signUp.value;
-                                        },
-                                      text: 'Sign in!',
-                                      style: const TextStyle(
-                                          color: Colors.blue, fontSize: 16)),
-                                ],
+                              SizedBox(
+                                height: height * 0.04,
                               ),
-                            ),
-                            SizedBox(
-                              height: height * 0.02,
-                            ),
-                            Obx(
-                              () => InkWell(
-                                onTap:
-                                    controller.createUserWithEmailAndPassword,
-                                child: Container(
-                                  width: width * 0.65,
-                                  height: height * 0.05,
-                                  decoration: BoxDecoration(
-                                    color: controller.checkRegisterField().value
-                                        ? null
-                                        : kSecondaryGrayColor,
-                                    gradient:
-                                        controller.checkRegisterField().value
-                                            ? const LinearGradient(
-                                                colors: kSecondaryGradient)
-                                            : null,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'Login',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: kPrimaryWhiteColor),
+                              Obx(() => TextFormField(
+                                    onChanged: (value) {
+                                      if (value.isEmpty) {
+                                        controller.isPasswordVisible.value =
+                                            false;
+                                      } else {
+                                        controller.isPasswordVisible.value =
+                                            true;
+                                      }
+                                    },
+                                    controller:
+                                        controller.passwordController.value,
+                                    obscureText:
+                                        controller.isPasswordVisible.value,
+                                    decoration: InputDecoration(
+                                      suffixIcon: controller.passwordController
+                                              .value.text.isEmpty
+                                          ? null
+                                          : IconButton(
+                                              icon:
+                                                  const Icon(Icons.visibility),
+                                              onPressed: controller
+                                                  .togglePasswordVisibility,
+                                            ),
+                                      hintText: 'Password',
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: height * 0.04,
+                              ),
+                              TextFormField(
+                                onChanged: (value) {
+                                  if (value.isEmpty) {
+                                    controller.isPasswordVisible.value = false;
+                                  } else {
+                                    controller.isPasswordVisible.value = true;
+                                  }
+                                },
+                                controller:
+                                    controller.repasswordController.value,
+                                obscureText: controller.isPasswordVisible.value,
+                                decoration: const InputDecoration(
+                                  hintText: 'Re-enter Password',
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.04,
+                              ),
+                              Text.rich(
+                                TextSpan(
+                                  text: 'Have an account? ',
+                                  style: const TextStyle(
+                                      color: Colors.grey, fontSize: 16),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            controller.emailController.value
+                                                .text = '';
+                                            controller.passwordController.value
+                                                .text = '';
+                                            controller.repasswordController
+                                                .value.text = '';
+                                            controller.signUp.value =
+                                                !controller.signUp.value;
+                                          },
+                                        text: 'Sign in!',
+                                        style: const TextStyle(
+                                            color: Colors.blue, fontSize: 16)),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.02,
+                              ),
+                              Obx(
+                                () => InkWell(
+                                  onTap:
+                                      controller.createUserWithEmailAndPassword,
+                                  child: Container(
+                                    width: width * 0.65,
+                                    height: height * 0.05,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          controller.checkRegisterField().value
+                                              ? null
+                                              : kSecondaryGrayColor,
+                                      gradient:
+                                          controller.checkRegisterField().value
+                                              ? const LinearGradient(
+                                                  colors: kSecondaryGradient)
+                                              : null,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: const Center(
+                                      child: Text(
+                                        'Login',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: kPrimaryWhiteColor),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : Container(
-                        height: height * 0.6,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 45, vertical: 80),
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(colors: kSecondaryGradient),
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(20)),
-                        ),
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              controller: controller.emailController.value,
-                              decoration:
-                                  const InputDecoration(hintText: 'Email'),
-                            ),
-                            SizedBox(
-                              height: height * 0.04,
-                            ),
-                            TextFormField(
-                              onChanged: (value) {
-                                if (value.isEmpty) {
-                                  controller.isPasswordVisible.value = false;
-                                } else {
-                                  controller.isPasswordVisible.value = true;
-                                }
-                              },
-                              controller: controller.passwordController.value,
-                              obscureText: controller.isPasswordVisible.value,
-                              decoration: InputDecoration(
-                                suffixIcon: controller
-                                        .passwordController.value.text.isEmpty
-                                    ? null
-                                    : IconButton(
-                                        icon: const Icon(Icons.visibility),
-                                        onPressed:
-                                            controller.togglePasswordVisibility,
-                                      ),
-                                hintText: 'Password',
+                            ],
+                          ),
+                        )
+                      : Container(
+                          height: height * 0.6,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 45, vertical: 80),
+                          decoration: const BoxDecoration(
+                            gradient:
+                                LinearGradient(colors: kSecondaryGradient),
+                            borderRadius:
+                                BorderRadius.vertical(top: Radius.circular(20)),
+                          ),
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                controller: controller.emailController.value,
+                                decoration:
+                                    const InputDecoration(hintText: 'Email'),
                               ),
-                            ),
-                            SizedBox(
-                              height: height * 0.06,
-                            ),
-                            const Text(
-                              'Forgot Password?',
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 16),
-                            ),
-                            SizedBox(
-                              height: height * 0.02,
-                            ),
-                            Obx(() => InkWell(
+                              SizedBox(
+                                height: height * 0.04,
+                              ),
+                              TextFormField(
+                                onChanged: (value) {
+                                  if (value.isEmpty) {
+                                    controller.isPasswordVisible.value = false;
+                                  } else {
+                                    controller.isPasswordVisible.value = true;
+                                  }
+                                },
+                                controller: controller.passwordController.value,
+                                obscureText: controller.isPasswordVisible.value,
+                                decoration: InputDecoration(
+                                  suffixIcon: controller
+                                          .passwordController.value.text.isEmpty
+                                      ? null
+                                      : IconButton(
+                                          icon: const Icon(Icons.visibility),
+                                          onPressed: controller
+                                              .togglePasswordVisibility,
+                                        ),
+                                  hintText: 'Password',
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.06,
+                              ),
+                              const Text(
+                                'Forgot Password?',
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: height * 0.02,
+                              ),
+                              Obx(
+                                () => InkWell(
                                   onTap: controller.signInWithEmailAndPassword,
                                   child: Container(
                                     width: width * 0.65,
@@ -374,10 +373,12 @@ class LoginScreen extends GetWidget<LoginController> {
                                       ),
                                     ),
                                   ),
-                                )),
-                          ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ))
+                )
               ],
             ),
           ),

@@ -146,22 +146,16 @@ class Profile extends GetView<ProfileController> {
                     return Image.asset('assets/images/mangak.png');
                   }),
               title: Text(
-                // 'Sheepu',
                 controller.username.toString(),
                 style: const TextStyle(fontSize: 24, color: kPrimaryBlackColor),
               ),
-              subtitle: Text(
-                  // 'Nguyễn Trung Hiếu',
-                  controller.name.toString(),
+              subtitle: Text(controller.name.toString(),
                   style: const TextStyle(
                       fontSize: 16, color: kSecondaryGrayColor)),
             ),
             SizedBox(
               height: height * 0.02,
             ),
-            // const Text(
-            //   'Đang học tập tại Học Viện công nghệ bưu chính viễn thông',
-            // ),
             Container(
               height: height * 0.02,
               decoration: const BoxDecoration(
@@ -202,11 +196,11 @@ class Profile extends GetView<ProfileController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('24',
-                            style: TextStyle(
-                                fontSize: 24, color: kPrimaryBlackColor)),
-                        Text('Likes',
+                      children: [
+                        Obx(() => Text(controller.favorites.length.toString(),
+                            style: const TextStyle(
+                                fontSize: 24, color: kPrimaryBlackColor))),
+                        const Text('Likes',
                             style: TextStyle(
                                 fontSize: 16, color: kSecondaryGrayColor)),
                       ],

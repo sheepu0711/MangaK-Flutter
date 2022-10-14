@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mangak/api/manga.dart';
 import 'package:mangak/screens/components/appbar.dart';
 import 'package:mangak/screens/components/infoappbar.dart';
 import 'package:mangak/screens/components/mangacolumn.dart';
@@ -14,7 +13,6 @@ class MangaDetail extends GetView<DetailController> {
   @override
   Widget build(BuildContext context) {
     DetailController detailController = Get.put(DetailController());
-    DataManga manga = Get.arguments['manga'];
     double height = Get.height;
     double width = Get.width;
     return DefaultTabController(
@@ -103,7 +101,9 @@ class MangaDetail extends GetView<DetailController> {
                         SizedBox(
                           height: height * 0.05,
                           width: width * 0.7,
-                          child: Text(manga.attributes!.title!.en.toString(),
+                          child: Text(
+                              controller.ls.value.attributes!.title!.en
+                                  .toString(),
                               // maxLines: 2,
                               style: const TextStyle(
                                 fontSize: 18,
@@ -243,7 +243,7 @@ class MangaDetail extends GetView<DetailController> {
                                                                       .title
                                                                       .toString() ==
                                                                   'null'
-                                                              ? ''
+                                                              ? 'No title'
                                                               : detailController
                                                                   .lsFeed
                                                                   .value

@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       getPages: AppPages.routes,
       initialRoute: AppPages.initial,
-      // home: const SplashView(),
       theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Ubuntu'),
     );
   }
