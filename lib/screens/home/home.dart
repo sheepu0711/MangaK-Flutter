@@ -26,6 +26,7 @@ class Home extends GetView<HomeController> {
         child: RefreshIndicator(
           onRefresh: homeController.onRefresh,
           child: SingleChildScrollView(
+            // physics: const AlwaysScrollableScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.only(
                 left: 33,

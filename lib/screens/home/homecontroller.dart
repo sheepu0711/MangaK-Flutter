@@ -81,7 +81,6 @@ class HomeController extends GetxController {
       // print(mangaapi.data["data"]);
       lsmanga = Manga.fromJson(mangaapi.data);
       // print(manga);
-
     } else {
       Get.snackbar('Có lỗi khi lấy api', 'Vui lòng thử lại sau');
     }
