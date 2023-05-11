@@ -46,6 +46,7 @@ dependencies:
   camera: ^0.10.0+3
   firebase_auth: ^3.11.0
   firebase_core: ^1.24.0
+  firebase_core_platform_interface: 4.5.1
   firebase_storage: ^10.3.10
   font_awesome_flutter: ^10.2.1
   flutter_facebook_auth: "^3.5.0"
